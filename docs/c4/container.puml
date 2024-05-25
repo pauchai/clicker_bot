@@ -1,0 +1,22 @@
+@startuml bot_clicker
+
+!include <C4/C4_Container>
+title
+<b>ClickBot v2024.04.07</b>
+<i>Клик бот</i>
+end title
+
+LAYOUT_WITH_LEGEND()
+
+ContainerDb(bot_clicker, "bot_clicker System") {
+    Container(browser, "Browser", "Manages browser macros")
+    Container(desktop, "Desktop", "Manages desktop macros")
+    SystemExt(user, "User", "Interacts with bot_clicker System")
+}
+
+Rel(browser, browser, "Manages")
+Rel(desktop, desktop, "Manages")
+
+Rel(user, bot_clicker, "Interacts with")
+
+@enduml

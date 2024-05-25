@@ -1,0 +1,51 @@
+@startuml
+class BotClicker {
+    - macros: List<Macro>
+    - browserService: BrowserService
+    - desktopService: DesktopService
+    
+    + addMacro(macro: Macro): void
+    + removeMacro(macro: Macro): void
+    + runMacros(): void
+}
+
+class Macro {
+    - actions: List<Action>
+    
+    + addAction(action: Action): void
+    + removeAction(action: Action): void
+    + execute(): void
+}
+
+abstract class Action {
+    - description: String
+    
+    + execute(): void
+}
+
+class BrowserAction {
+    + execute(): void
+}
+
+class DesktopAction {
+    + execute(): void
+}
+
+interface BrowserService {
+    + openUrl(url: String): void
+    + fillForm(formElements: Map<String, String>): void
+    + clickButton(): void
+}
+
+interface DesktopService {
+    + launchApplication(applicationName: String): void
+    + performAction(action: String): void
+}
+
+BotClicker --> Macro
+Macro o-- Action
+Action <|-- BrowserAction
+Action <|-- DesktopAction
+BrowserService <|.. BrowserAction
+DesktopService <|.. DesktopAction
+@enduml

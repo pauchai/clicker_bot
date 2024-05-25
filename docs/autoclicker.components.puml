@@ -1,0 +1,16 @@
+@startuml
+package "BotClicker System" {
+    [BotClicker]
+    [MacroManager]
+    [BrowserService]
+    [DesktopService]
+    [BrowserMacroExecutor]
+    [DesktopMacroExecutor]
+}
+
+[BotClicker] --> [MacroManager]
+[BotClicker] --> [BrowserService]
+[BotClicker] --> [DesktopService]
+[MacroManager] --> [BrowserMacroExecutor]
+[MacroManager] --> [DesktopMacroExecutor]
+@enduml

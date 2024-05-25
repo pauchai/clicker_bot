@@ -1,0 +1,29 @@
+@startuml click_bot
+!include <C4/C4_Container>
+title
+<b>ClickBot v2024.04.07</b>
+<i>Клик бот</i>
+end title
+
+Person(user, "User")
+System_Boundary(clickBotSystem, "ClickBot"){
+    Container(near_wallet_create, "создать кошелек")
+    Container(near_wallet_update, "имзенить адрес  кошелька")
+    Container(near_send_coin, "отправить крипту на кошелек")
+    Container(near_receive_coin, "получить крипту на кошелек")
+    Container(near_transactions_history, "Получить История транзакций")  
+    Container(core_thanka, "Получить История транзакций")  
+
+
+}
+
+System_Boundary(system_, "команды операционной системы"){
+    Container(browser_backend, "Интернет браузер")
+    Container(other_backend, "другие backends ")
+}
+
+Rel(user, clickBotSystem, "запрос")
+Rel(clickBotSystem, system_, "обращение backend")
+
+
+@enduml
